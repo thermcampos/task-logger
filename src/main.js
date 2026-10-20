@@ -9,42 +9,12 @@ const MOOD_DELTAS = {
     '🤸 Treinei': 2,
 };
 
-const MOOD_STATES = {
-    ecstatic: {
-        mouth:      'M 25,60 C 35,78 65,78 75,60',
-        browLeft:   'M 22,26 Q 33,20 43,24',
-        browRight:  'M 57,24 Q 67,20 78,26',
-        cheeks: 0.45,
-        label: 'Empolgadíssimo!'
-    },
-    happy: {
-        mouth:      'M 30,62 C 38,73 62,73 70,62',
-        browLeft:   'M 22,28 Q 33,24 43,27',
-        browRight:  'M 57,27 Q 67,24 78,28',
-        cheeks: 0,
-        label: 'Feliz'
-    },
-    neutral: {
-        mouth:      'M 32,65 C 42,65 58,65 68,65',
-        browLeft:   'M 22,30 Q 32,30 43,30',
-        browRight:  'M 57,30 Q 67,30 78,30',
-        cheeks: 0,
-        label: 'Neutro'
-    },
-    sad: {
-        mouth:      'M 30,70 C 38,60 62,60 70,70',
-        browLeft:   'M 22,33 Q 33,27 43,31',
-        browRight:  'M 57,31 Q 67,27 78,33',
-        cheeks: 0,
-        label: 'Triste'
-    },
-    'very-sad': {
-        mouth:      'M 25,74 C 35,60 65,60 75,74',
-        browLeft:   'M 22,26 Q 33,30 43,35',
-        browRight:  'M 57,35 Q 67,30 78,26',
-        cheeks: 0,
-        label: 'Muito mal'
-    },
+const MOOD_LABELS = {
+    ecstatic: 'Empolgadíssimo!',
+    happy: 'Feliz',
+    neutral: 'Neutro',
+    sad: 'Triste',
+    'very-sad': 'Muito mal',
 };
 
 function loadMoodScore() {
@@ -69,17 +39,11 @@ function applyMoodDelta(feeling) {
     if (delta === undefined) return;
     const score = Math.max(-10, Math.min(10, loadMoodScore() + delta));
     saveMoodScore(score);
-    renderAvatar();
+    renderMoodLabel();
 }
 
-function renderAvatar() {
-    const state = MOOD_STATES[getMoodState(loadMoodScore())];
-    document.getElementById('mouthPath').setAttribute('d', state.mouth);
-    document.getElementById('browLeft').setAttribute('d', state.browLeft);
-    document.getElementById('browRight').setAttribute('d', state.browRight);
-    document.getElementById('cheekLeft').setAttribute('opacity', state.cheeks);
-    document.getElementById('cheekRight').setAttribute('opacity', state.cheeks);
-    document.getElementById('moodLabel').textContent = state.label;
+function renderMoodLabel() {
+    document.getElementById('moodLabel').textContent = MOOD_LABELS[getMoodState(loadMoodScore())];
 }
 
 // Load check-ins from localStorage
@@ -513,7 +477,7 @@ document.getElementById('feelingReason').addEventListener('keypress', function(e
 updateCurrentDate();
 renderHistory();
 restoreClickedStates();
-renderAvatar();
+renderMoodLabel();
 
 // PWA Update handling
 if ('serviceWorker' in navigator) {
