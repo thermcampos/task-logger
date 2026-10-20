@@ -1,7 +1,4 @@
-# Archived repo
-
-The new content can be found in Gitea: https://lightroasted.vps-kinghost.net/rmcampos/task-logger
-# Check-In Tracker
+# Task Logger
 
 A Progressive Web App for tracking daily activities with timestamped check-ins. Built with vanilla JavaScript and Vite.
 
@@ -18,7 +15,7 @@ A Progressive Web App for tracking daily activities with timestamped check-ins. 
 
 The app is deployed to Pages and available at:
 
-**https://task-logger.lightroasted.vps-kinghost.net**
+https://thermcampos.github.io/task-logger/
 
 ## Development
 
