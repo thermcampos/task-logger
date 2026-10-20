@@ -9,14 +9,6 @@ const MOOD_DELTAS = {
     '🤸 Treinei': 2,
 };
 
-const MOOD_LABELS = {
-    ecstatic: 'Empolgadíssimo!',
-    happy: 'Feliz',
-    neutral: 'Neutro',
-    sad: 'Triste',
-    'very-sad': 'Muito mal',
-};
-
 function loadMoodScore() {
     const stored = localStorage.getItem('moodScore');
     return stored !== null ? parseInt(stored, 10) : 0;
@@ -26,24 +18,11 @@ function saveMoodScore(score) {
     localStorage.setItem('moodScore', String(score));
 }
 
-function getMoodState(score) {
-    if (score > 6)  return 'ecstatic';
-    if (score >= 2) return 'happy';
-    if (score >= -1) return 'neutral';
-    if (score >= -5) return 'sad';
-    return 'very-sad';
-}
-
 function applyMoodDelta(feeling) {
     const delta = MOOD_DELTAS[feeling];
     if (delta === undefined) return;
     const score = Math.max(-10, Math.min(10, loadMoodScore() + delta));
     saveMoodScore(score);
-    renderMoodLabel();
-}
-
-function renderMoodLabel() {
-    document.getElementById('moodLabel').textContent = MOOD_LABELS[getMoodState(loadMoodScore())];
 }
 
 // Load check-ins from localStorage
@@ -477,7 +456,6 @@ document.getElementById('feelingReason').addEventListener('keypress', function(e
 updateCurrentDate();
 renderHistory();
 restoreClickedStates();
-renderMoodLabel();
 
 // PWA Update handling
 if ('serviceWorker' in navigator) {
