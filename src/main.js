@@ -101,47 +101,66 @@ function showToast(message) {
     }, 2000);
 }
 
-let selectedFeeling = null;
+let selectedActivity = null;
 
-// Feeling check-in (opens modal)
-function feelingCheckIn(feeling) {
-    selectedFeeling = feeling;
+// Open note modal for a feeling or activity
+function openNoteModal(activity, title) {
+    selectedActivity = activity;
     const modal = document.getElementById('modalOverlay');
-    const title = document.getElementById('modalTitle');
-    const input = document.getElementById('feelingReason');
-    
-    title.textContent = `How are you feeling? (${feeling})`;
+    const titleEl = document.getElementById('modalTitle');
+    const input = document.getElementById('modalNote');
+
+    titleEl.textContent = title;
     input.value = '';
     modal.classList.add('show');
-    
+
     // Focus input after small delay for mobile
     setTimeout(() => input.focus(), 100);
 }
 
-// Close feeling modal
+// Feeling check-in (opens modal)
+function feelingCheckIn(feeling) {
+    openNoteModal(feeling, `How are you feeling? (${feeling})`);
+}
+
+// Quick check-in with preset activity (opens modal)
+function quickCheckIn(activity) {
+    openNoteModal(activity, activity);
+}
+
+// Close note modal
 function closeModal() {
     const modal = document.getElementById('modalOverlay');
     modal.classList.remove('show');
-    selectedFeeling = null;
+    selectedActivity = null;
 }
 
-// Submit feeling from modal
-function submitFeeling() {
-    const input = document.getElementById('feelingReason');
-    const reason = input.value.trim();
-    let activity = selectedFeeling;
+// Submit from modal with optional note
+function submitModal() {
+    if (!selectedActivity) return;
+    const input = document.getElementById('modalNote');
+    const note = input.value.trim();
+    let activity = selectedActivity;
 
-    if (reason) {
-        activity = `${selectedFeeling} - ${reason}`;
+    if (note) {
+        activity = `${selectedActivity} - ${note}`;
     }
 
-    applyMoodDelta(selectedFeeling);
-    quickCheckIn(activity);
+    applyMoodDelta(selectedActivity);
+    saveCheckIn(activity);
     closeModal();
 }
 
-// Quick check-in with preset activity
-function quickCheckIn(activity) {
+// Skip the optional note and save the activity as-is
+function skipModal() {
+    if (!selectedActivity) return;
+    applyMoodDelta(selectedActivity);
+    saveCheckIn(selectedActivity);
+    closeModal();
+}
+
+// Save a check-in entry
+function saveCheckIn(activity) {
     // If it's "Levantei da cama", clear yesterday's tracking
     if (activity.startsWith('🛏️ Woke Up')) {
         clearClickedButtons();
@@ -150,8 +169,6 @@ function quickCheckIn(activity) {
             btn.classList.remove('clicked');
         });
     }
-
-    applyMoodDelta(activity);
 
     // Save the check-in
     const checkIns = loadCheckIns();
@@ -420,7 +437,8 @@ window.customCheckIn = customCheckIn;
 window.clearHistory = clearHistory;
 window.feelingCheckIn = feelingCheckIn;
 window.closeModal = closeModal;
-window.submitFeeling = submitFeeling;
+window.submitModal = submitModal;
+window.skipModal = skipModal;
 window.deleteCheckIn = deleteCheckIn;
 window.closeDeleteModal = closeDeleteModal;
 window.confirmDelete = confirmDelete;
@@ -445,10 +463,10 @@ document.getElementById('customActivity').addEventListener('keypress', function(
     }
 });
 
-// Allow Enter key for feeling reason
-document.getElementById('feelingReason').addEventListener('keypress', function(e) {
+// Allow Enter key for the optional note
+document.getElementById('modalNote').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
-        submitFeeling();
+        submitModal();
     }
 });
 
