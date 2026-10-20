@@ -110,7 +110,7 @@ function feelingCheckIn(feeling) {
     const title = document.getElementById('modalTitle');
     const input = document.getElementById('feelingReason');
     
-    title.textContent = `Como você está se sentindo? (${feeling})`;
+    title.textContent = `How are you feeling? (${feeling})`;
     input.value = '';
     modal.classList.add('show');
     
@@ -143,7 +143,7 @@ function submitFeeling() {
 // Quick check-in with preset activity
 function quickCheckIn(activity) {
     // If it's "Levantei da cama", clear yesterday's tracking
-    if (activity.startsWith('🛏️ Acordei')) {
+    if (activity.startsWith('🛏️ Woke Up')) {
         clearClickedButtons();
         // Update all buttons to remove grayed state
         document.querySelectorAll('.activity-btn').forEach(btn => {
@@ -192,14 +192,14 @@ function customCheckIn() {
     saveCheckIns(checkIns);
     input.value = '';
     renderHistory();
-    showToast('Registrado!');
+    showToast('Checked in!');
 }
 
 function clearHistory() {
-    if (confirm('Apagar tudo?')) {
+    if (confirm('Delete all check-ins?')) {
         localStorage.removeItem('checkIns');
         renderHistory();
-        showToast('Histórico limpo');
+        showToast('History cleared');
     }
 }
 
@@ -212,11 +212,11 @@ function formatDate(date) {
     const dateStr = date.toDateString();
     
     if (dateStr === today.toDateString()) {
-        return 'Hoje';
+        return 'Today';
     } else if (dateStr === yesterday.toDateString()) {
-        return 'Ontem';
+        return 'Yesterday';
     } else {
-        return date.toLocaleDateString('pt-BR', { 
+        return date.toLocaleDateString('en-US', { 
             weekday: 'long', 
             month: 'short', 
             day: 'numeric' 
@@ -226,7 +226,7 @@ function formatDate(date) {
 
 // Format time
 function formatTime(date) {
-    return date.toLocaleTimeString('pt-BR', { 
+    return date.toLocaleTimeString('en-US', { 
         hour: 'numeric', 
         minute: '2-digit',
         hour12: false 
@@ -247,7 +247,7 @@ function renderHistory() {
     });
 
     if (recentCheckIns.length === 0) {
-        historyList.innerHTML = '<div class="empty-state">Nada ainda. Toque num botão acima pra começar!</div>';
+        historyList.innerHTML = '<div class="empty-state">No check-ins yet. Tab a button above to get started!</div>';
         return;
     }
 
@@ -310,7 +310,7 @@ function renderHistory() {
 // Update current date
 function updateCurrentDate() {
     const now = new Date();
-    const dateStr = now.toLocaleDateString('pt-BR', { 
+    const dateStr = now.toLocaleDateString('en-US', { 
         weekday: 'long', 
         month: 'long', 
         day: 'numeric' 

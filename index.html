@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#000000">
-    <title>Check-in</title>
+    <title>Task Logger Check-In</title>
     <link rel="icon" type="image/svg+xml" href="/icon.svg">
     <link rel="stylesheet" href="/src/style.css">
 </head>
@@ -15,44 +15,59 @@
         <div class="date" id="currentDate"></div>
     </div>
 
+
 <div class="activity-section">
-    <h2 class="group-header">Atividades</h2>
-    <div class="activities">
-        <button class="activity-btn" onclick="quickCheckIn('🛏️ Levantei da cama')">🛏️ Levantei da cama</button>
-        <button class="activity-btn" onclick="quickCheckIn('🧘 Meditei')">🧘 Meditei</button>
-        <button class="activity-btn" onclick="quickCheckIn('💪 Cheguei na academia')">💪 Cheguei na academia</button>
-        <button class="activity-btn" onclick="quickCheckIn('💪 Saí da academia')">💪 Saí da academia</button>
-	    <button class="activity-btn" onclick="quickCheckIn('🤸 Treinei')">🤸 Treinei</button>
-        <button class="activity-btn" onclick="quickCheckIn('🍳 Tomei café da manhã')">🍳 Tomei café da manhã</button>
-        <button class="activity-btn" onclick="quickCheckIn('🪑 Cheguei na minha mesa')">🪑 Cheguei na minha mesa</button>
-        <button class="activity-btn" onclick="quickCheckIn('🍽️ Almocei')">🍽️ Almocei</button>
-        <button class="activity-btn" onclick="quickCheckIn('🍎 Tomei café da tarde')">🍎 Tomei café da tarde</button>
-        <button class="activity-btn" onclick="quickCheckIn('💼 Saí do trabalho')">💼 Saí do trabalho</button>
-        <button class="activity-btn" onclick="quickCheckIn('🍷 Jantei')">🍷 Jantei</button>
-        <button class="activity-btn" onclick="quickCheckIn('😴 Fui dormir')">😴 Fui dormir</button>
-        <button class="activity-btn" onclick="quickCheckIn('☕ Tomei café')">☕ Tomei café</button>
+  <h2 class="group-header">Routine</h2>
+  <div class="activities">
+    <button class="activity-btn" onclick="quickCheckIn('🛏️ Woke Up')">🛏️ Woke Up</button>
+    <button class="activity-btn" onclick="quickCheckIn('🍳 Had Breakfast')">🍳 Had Breafast</button>
+    <button class="activity-btn" onclick="quickCheckIn('🪑 Arrived at work')">🪑 Arrived at work</button>
+    <button class="activity-btn" onclick="quickCheckIn('🍽️ Had Lunch')">🍽️ Had Lunch</button>
+    <button class="activity-btn" onclick="quickCheckIn('🍎 Had quick break')">🍎 Had quick break</button>
+    <button class="activity-btn" onclick="quickCheckIn('💼 Left work')">💼 Left work</button>
+    <button class="activity-btn" onclick="quickCheckIn('🍷 Had Dinner')">🍷 Had Dinner</button>
+    <button class="activity-btn" onclick="quickCheckIn('😴 Went to Bed')">😴 Went to Bed</button>
+  </div>
+</div>
+
+<div class="activity-section">
+  <h2 class="group-header">Activities</h2>
+  <div class="activities">
+        <button class="activity-btn" onclick="quickCheckIn('🧘 Did meditation')">🧘 Did meditation</button>
+        <button class="activity-btn" onclick="quickCheckIn('💪 Arrived at Gym')">💪 Arrived at Gym</button>
+        <button class="activity-btn" onclick="quickCheckIn('💪 Left Gym')">💪 Left Gym</button>
+	      <button class="activity-btn" onclick="quickCheckIn('🤸 Did workout')">🤸 Did workout</button>
+        <button class="activity-btn" onclick="quickCheckIn('🏃 Did street running')">🏃 Did street running</button>
+        <button class="activity-btn" onclick="quickCheckIn('😋 Started fasting')">😋 Started fasting</button>
+        <button class="activity-btn" onclick="quickCheckIn('😋 Completed fasting')">😋 Complete fasting</button>
+        <button class="activity-btn" onclick="quickCheckIn('📱 Started social media')">📱 Started social media</button>
+        <button class="activity-btn" onclick="quickCheckIn('📱 Stopped social media')">📱 Stopped social media</button>
+
+        <button class="activity-btn" onclick="quickCheckIn('📖 Started reading')">📖 Started reading</button>
+        <button class="activity-btn" onclick="quickCheckIn('📖 Stopped reading')">📖 Stopped reading</button>
+        <button class="activity-btn" onclick="quickCheckIn('☕ Had a coffee')">☕ had a coffee</button>
     </div>
 </div>
 
 <div class="activity-section">
-    <h2 class="group-header">Humor</h2>
+    <h2 class="group-header">Feeling</h2>
     <div class="activities">
-        <button class="activity-btn" onclick="feelingCheckIn('😊 Feliz')">😊 Feliz</button>
-        <button class="activity-btn" onclick="feelingCheckIn('😢 Triste')">😢 Triste</button>
-        <button class="activity-btn" onclick="feelingCheckIn('😠 Frustrado')">😠 Frustrado</button>
-        <button class="activity-btn" onclick="feelingCheckIn('😰 Ansioso')">😰 Ansioso</button>
-        <button class="activity-btn" onclick="feelingCheckIn('🤩 Empolgado')">🤩 Empolgado</button>
-        <button class="activity-btn" onclick="feelingCheckIn('😡 Bravo')">😡 Bravo</button>
+        <button class="activity-btn" onclick="feelingCheckIn('😊 Happy')">😊 Happy</button>
+        <button class="activity-btn" onclick="feelingCheckIn('😢 Sad')">😢 Sad</button>
+        <button class="activity-btn" onclick="feelingCheckIn('😠 Frustrated')">😠 Frustrated</button>
+        <button class="activity-btn" onclick="feelingCheckIn('😰 Anxious')">😰 Anxious</button>
+        <button class="activity-btn" onclick="feelingCheckIn('🤩 Excited')">🤩 Excited</button>
+        <button class="activity-btn" onclick="feelingCheckIn('😡 Mad')">😡 Mad</button>
     </div>
 </div>
 
 <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
-        <h3 id="modalTitle">Como você está se sentindo?</h3>
-        <input type="text" id="feelingReason" class="custom-input" placeholder="Opcional: por que esse sentimento?">
+        <h3 id="modalTitle">How are you feeling?</h3>
+        <input type="text" id="feelingReason" class="custom-input" placeholder="Optional: Why are you feeling this way?">
         <div class="modal-buttons">
-            <button class="modal-btn cancel" onclick="closeModal()">Cancelar</button>
-            <button class="modal-btn confirm" onclick="submitFeeling()">Salvar</button>
+            <button class="modal-btn cancel" onclick="closeModal()">Skip</button>
+            <button class="modal-btn confirm" onclick="submitFeeling()">Save</button>
         </div>
     </div>
 </div>
@@ -60,39 +75,40 @@
 <div class="modal-overlay" id="deleteModalOverlay">
     <div class="modal">
         <h3>Apagar check-in?</h3>
-        <p class="modal-description">Esta ação não pode ser desfeita.</p>
+        <p class="modal-description">This can't be undone.</p>
         <div class="modal-buttons">
-            <button class="modal-btn cancel" onclick="closeDeleteModal()">Cancelar</button>
-            <button class="modal-btn delete" onclick="confirmDelete()">Apagar</button>
+            <button class="modal-btn cancel" onclick="closeDeleteModal()">Cancel</button>
+            <button class="modal-btn delete" onclick="confirmDelete()">Delete</button>
         </div>
     </div>
 </div>
 
 <div class="modal-overlay" id="infoModalOverlay">
     <div class="modal">
-        <h3>Sobre o Check-in</h3>
+        <h3>About Task Logger</h3>
         <p class="modal-description" id="infoModalContent">
-            Este é um aplicativo para registro diário de atividades e também de emoções, humores.
+            This is an app for daily activities, humor and routine tracking.
             <br><br>
-            Use os botões para registrar suas atividades ou adicione atividades personalizadas.
+            Use the buttons to track your activities or add a custom one.
             <br><br>
-            Seus dados são armazenados localmente no seu dispositivo.
+            Your data are stored locally on your device only (meaning will not
+            be shared across devices, for good or bad)
         </p>
         <div class="modal-buttons">
-            <button class="modal-btn confirm" onclick="closeInfoModal()">Fechar</button>
+            <button class="modal-btn confirm" onclick="closeInfoModal()">Close</button>
         </div>
     </div>
 </div>
 
 <div class="custom-checkin">
-    <input type="text" class="custom-input" id="customActivity" placeholder="Ou digite sua própria atividade...">
-    <button class="custom-btn" onclick="customCheckIn()">Registrar</button>
+    <input type="text" class="custom-input" id="customActivity" placeholder="Or type your own activity...">
+    <button class="custom-btn" onclick="customCheckIn()">Check In</button>
 </div>
 
 <div class="history">
     <div class="history-header">
-        <h2>Últimos 30 dias</h2>
-        <button class="clear-btn" onclick="clearHistory()">Limpar tudo</button>
+        <h2>Last 30 days</h2>
+        <button class="clear-btn" onclick="clearHistory()">Clear All</button>
     </div>
     <div id="historyList"></div>
 </div>
@@ -101,8 +117,8 @@
 
   <div class="update-notification" id="updateNotification">
     <div class="update-content">
-      <span class="update-message">Nova versão disponível!</span>
-      <button class="update-btn" id="updateBtn">Atualizar</button>
+      <span class="update-message">New version available!</span>
+      <button class="update-btn" id="updateBtn">Reload</button>
       <button class="update-dismiss" id="dismissBtn">×</button>
     </div>
   </div>
